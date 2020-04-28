@@ -1,0 +1,27 @@
+@charset "utf-8";
+
+// Fonts
+@font-face {
+    font-family: 'OpenSansCondensedBold';
+    src: url('../../fonts/OpenSansCondensed-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'OpenSansCondensedLight';
+    src: url('../../fonts/OpenSansCondensed-Light.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'OpenSansCondensedLightItalic';
+    src: url('../../fonts/OpenSansCondensed-LightItalic.ttf') format('truetype');
+}
+
+// Colours
+$white: #FFF;
+$black: #333;
+
+$grey-900: #4A4A4A;
+
+// Homepage
+$homepage-padding-y: 1.25rem !default;
+$homepage-padding-x: 5rem !default;
