@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, ReactNode } from 'react';
 
 import MenuItem from '../menu-item/menu-item.component';
 
@@ -59,14 +59,13 @@ class Directory extends Component<{}, DirectoryState> {
         }
     }
 
-    render() {
+    render(): ReactNode {
         return (
             <div className='directory-menu'>
                 {
-                    this.state.sections
-                        .map(({ id, ...otherSectionProps }) => (
-                            <MenuItem key={id} {...otherSectionProps} />
-                        ))
+                    this.state.sections.map(({ id, ...otherSectionProps }) => (
+                        <MenuItem key={id} {...otherSectionProps} />
+                    ))
                 }
             </div>
         );
