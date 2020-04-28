@@ -1,0 +1,11 @@
+.nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+
+    .nav-item {
+        padding: 10px 15px;
+    }
+}
