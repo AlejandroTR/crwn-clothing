@@ -1,10 +1,14 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: $body-padding-y $body-padding-x;
-    font-family: OpenSansCondensedLight, sans-serif;
+    @include family-text;
 }
 
 a {
     text-decoration: none;
-    color: $black;
+    color: inherit;
 }

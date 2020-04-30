@@ -1,9 +1,11 @@
+@import '../../assets/styles/core/core';
+
 .header {
     display: flex;
     justify-content: space-between;
     margin-bottom: 25px;
     width: 100%;
-    height: 70px;
+    height: $header-height;
 
     .logo-container {
         width: 70px;

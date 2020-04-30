@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from 'react';
 
+import CollectionItem from '../collection-item/collection-item.component';
+
 import './collection-preview.styles.scss'
 
 import { Collection, Item } from '../../model/collection';
-
-import CollectionItem from '../collection-item/collection-item.component';
 
 const CollectionPreview: FunctionComponent<Collection> = ({ title, items }) => (
     <div className='collection-preview'>
@@ -12,8 +12,8 @@ const CollectionPreview: FunctionComponent<Collection> = ({ title, items }) => (
         <div className='preview'>
             {items
                 .filter((item: Item, idx: number) => idx < 4)
-                .map(({ id, ...otherItemProps }) => (
-                    <CollectionItem key={id} {...otherItemProps} />
+                .map(({ id, ...props }) => (
+                    <CollectionItem key={id} {...props} />
                 ))
             }
         </div>

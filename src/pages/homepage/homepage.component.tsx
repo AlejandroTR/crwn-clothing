@@ -1,8 +1,8 @@
 import React from 'react';
 
-import './homepage.styless.scss'
-
 import Directory from '../../components/directory/directory.component';
+
+import './homepage.styless.scss'
 
 const HomePage = () => (
     <div className='homepage'>

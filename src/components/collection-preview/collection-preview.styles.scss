@@ -1,3 +1,5 @@
+@import '../../assets/styles/core/core';
+
 .collection-preview {
     display: flex;
     flex-direction: column;
@@ -5,7 +7,7 @@
 
     .title {
         margin-bottom: 25px;
-        font-size: 28px;
+        @include font-size(28px);
     }
 
     .preview {

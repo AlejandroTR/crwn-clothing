@@ -20,12 +20,15 @@
 $white: #FFF;
 $black: #333;
 
+$grey-500: #808080;
 $grey-900: #4A4A4A;
+
+$google-blue: #4285F4;
+$google-blue-hoover: #357AE8;
 
 // Body
 $body-padding-y: 1.25rem !default;
 $body-padding-x: 3.75rem !default;
 
-// Homepage
-$homepage-padding-y: 1.25rem !default;
-$homepage-padding-x: 5rem !default;
+// Header
+$header-height: 4.375rem !default;

@@ -1,0 +1,14 @@
+@function calculate-rem($size) {
+    $rem-size: $size / 16px;
+    @return $rem-size * 1rem;
+}
+
+@mixin font-size($size) {
+    font-size: calculate-rem($size);
+}
+
+@mixin family-text {
+    font: {
+        family: 'OpenSansCondensedLight', sans-serif;
+    };
+}
