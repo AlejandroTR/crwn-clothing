@@ -7,15 +7,15 @@ import './header.styles.scss';
 import { ReactComponent as Logo } from '../../assets/icons/crown.svg';
 
 interface HeaderProps {
-    authUser?: any;
+    currentUser?: any;
 }
 
-const Header: FunctionComponent<HeaderProps> = ({ authUser }) => (
+const Header: FunctionComponent<HeaderProps> = ({ currentUser }) => (
     <div className='header'>
         <Link className='logo-container' to='/'>
             <Logo />
         </Link>
-        <Nav authUser={authUser} />
+        <Nav currentUser={currentUser} />
     </div>
 )
 

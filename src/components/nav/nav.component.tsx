@@ -6,10 +6,10 @@ import { auth } from '../../firebase/firebase.utils';
 import './nav.styles.scss';
 
 interface NavProps {
-    authUser?: any;
+    currentUser?: any;
 }
 
-const Nav: FunctionComponent<NavProps> = ({ authUser }) => (
+const Nav: FunctionComponent<NavProps> = ({ currentUser }) => (
     <div className="nav">
         <Link className='nav-item' to='/shop'>
             Shop
@@ -17,7 +17,7 @@ const Nav: FunctionComponent<NavProps> = ({ authUser }) => (
         <Link className='nav-item' to='/signin'>
             Contact
         </Link>
-        {authUser ? (
+        {currentUser ? (
             <div className='nav-item' onClick={() => auth.signOut()}>
                 Sign out
             </div>

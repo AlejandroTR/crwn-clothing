@@ -2,33 +2,50 @@ import React, { Component, ReactNode } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import { Unsubscribe } from 'firebase';
-import { auth } from './firebase/firebase.utils';
+import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 
 import Header from './components/header/header.component';
 import HomePage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shop/shop.component';
 import SignInAndSignUpPage from './pages/sign-in-and-sing-up/sign-in-and-sing-up.component';
 
+import { User } from './model/user';
+
 type AppState = {
-    authUser?: any;
+    currentUser: User | null;
 }
 
 class App extends Component<{}, AppState> {
-    constructor(props: {}) {
+    constructor(props: any) {
         super(props);
 
         this.state = {
-            authUser: null
-        }
+            currentUser: null
+        };
     }
 
     unsubscribeFromAuth: Unsubscribe | null = null;
 
     componentDidMount(): void {
-        this.unsubscribeFromAuth = auth.onAuthStateChanged(authUser => {
-            this.setState({ authUser })
+        this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+            if (userAuth) {
+                const userRef = await createUserProfileDocument(userAuth);
 
-            console.log(authUser)
+                if (userRef) {
+                    userRef.onSnapshot(snapShot => {
+                        this.setState({
+                            currentUser: {
+                                id: snapShot.id,
+                                ...snapShot.data()
+                            }
+                        });
+
+                        console.log(this.state)
+                    });
+                }
+            }
+
+            this.setState({ currentUser: userAuth as null })
         })
     }
 
@@ -41,7 +58,7 @@ class App extends Component<{}, AppState> {
     render(): ReactNode {
         return (
             <div>
-                <Header authUser={this.state.authUser} />
+                <Header currentUser={this.state.currentUser} />
                 <Switch>
                     <Route exact path='/' component={HomePage} />
                     <Route path='/shop' component={ShopPage} />

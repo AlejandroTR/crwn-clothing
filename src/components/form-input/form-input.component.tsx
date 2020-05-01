@@ -10,7 +10,7 @@ const FormInput: FunctionComponent<FormInputProps> = ({ handleChange, label, ...
     <div className="group">
         <input type='text' className='form-input' onChange={handleChange} {...props} />
         {label ? (
-            <label htmlFor='' className={`${props.value ? 'shrink' : ''} form-input-label`}>
+            <label htmlFor={props.id} className={`${props.value ? 'shrink' : ''} form-input-label`}>
                 {label}
             </label>
         ) : null}

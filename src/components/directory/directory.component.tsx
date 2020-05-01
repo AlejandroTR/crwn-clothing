@@ -17,7 +17,7 @@ type DirectoryState = {
 }
 
 class Directory extends Component<{}, DirectoryState> {
-    constructor(props: {}) {
+    constructor(props: any) {
         super(props);
 
         this.state = {
@@ -55,8 +55,7 @@ class Directory extends Component<{}, DirectoryState> {
                     linkUrl: 'shop/mens'
                 }
             ]
-
-        }
+        };
     }
 
     render(): ReactNode {

@@ -13,28 +13,30 @@ type SignInState = {
 }
 
 class SignIn extends Component<{}, SignInState> {
-    constructor(props: {}) {
+    constructor(props: any) {
         super(props);
 
         this.state = {
             email: '',
             password: ''
-        }
+        };
     }
 
-    handleSubmit = (event: FormEvent)  => {
-        event.preventDefault();
-        
-        this.setState({ email: '', password: '' })
-    }
-    
     handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { value, name } = event.target;
-        
-        this.setState({ [name]: value } as Pick<SignInState, keyof SignInState>)
+
+        this.setState({ [name]: value } as Pick<SignInState, keyof SignInState>);
     }
-    
+
+    handleSubmit = (event: FormEvent) => {
+        event.preventDefault();
+
+        this.setState({ email: '', password: '' });
+    }
+
     render(): ReactNode {
+        const { email, password } = this.state;
+
         return (
             <div className='sign-in'>
                 <h2>I already have an account</h2>
@@ -43,18 +45,18 @@ class SignIn extends Component<{}, SignInState> {
                 <form onSubmit={this.handleSubmit}>
                     <FormInput
                         type='email'
-                        id='email'
+                        id='signInEmail'
                         name='email'
-                        value={this.state.email}
-                        label='email'
+                        value={email}
+                        label='Email'
                         required
                         handleChange={this.handleChange} />
                     <FormInput
                         type='password'
-                        id='password'
+                        id='signInPassword'
                         name='password'
-                        value={this.state.password}
-                        label='password'
+                        value={password}
+                        label='Password'
                         required
                         handleChange={this.handleChange} />
                     <div className="buttons">
@@ -62,8 +64,7 @@ class SignIn extends Component<{}, SignInState> {
                             Sign in
                         </CustomButton>
                         <CustomButton onClick={signInWithGoogle} value='Submit Form' isGoogleSignIn>
-                            {' '}
-                            Sign in with Google{' '}
+                            Sign in with Google
                         </CustomButton>
                     </div>
                 </form>

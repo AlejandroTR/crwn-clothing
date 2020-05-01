@@ -11,13 +11,12 @@ type ShopState = {
 }
 
 class ShopPage extends Component<{}, ShopState> {
-    constructor(props: {}) {
+    constructor(props: any) {
         super(props);
-
 
         this.state = {
             collections: SHOP_DATA
-        }
+        };
     }
 
     render(): ReactNode {
