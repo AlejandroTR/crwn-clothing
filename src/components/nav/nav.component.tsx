@@ -14,7 +14,7 @@ const mapState = (state: RootState) => ({
 
 const connector = connect(mapState);
 
-type PropsFromRedux = ConnectedProps<typeof connector>
+type PropsFromRedux = ConnectedProps<typeof connector>;
 
 const Nav: FunctionComponent<PropsFromRedux> = ({ user }) => (
     <div className="nav">
@@ -34,6 +34,6 @@ const Nav: FunctionComponent<PropsFromRedux> = ({ user }) => (
             </Link>
         )}
     </div>
-)
+);
 
 export default connector(Nav);

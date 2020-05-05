@@ -1,11 +1,12 @@
 import React, { Component, ReactNode } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { Dispatch } from 'redux';
 import { connect, ConnectedProps } from 'react-redux';
 
 import { Unsubscribe } from 'firebase';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 
+import { RootState } from './store/reducer';
 import { SetUserAction } from './store/user/types';
 import { setUser } from './store/user/actions';
 
@@ -16,27 +17,29 @@ import SignInAndSignUpPage from './pages/sign-in-and-sing-up/sign-in-and-sing-up
 
 import { User } from './models/user';
 
+const mapState = ({ user }: RootState) => ({
+    user: user.user
+});
+
 const mapDispatch = (dispatch: Dispatch<SetUserAction>) => ({
-    user: (user: User | null) => dispatch(setUser(user))
-})
+    setUser: (user: User | null) => dispatch(setUser(user))
+});
 
-const connector = connect(null, mapDispatch);
+const connector = connect(mapState, mapDispatch);
 
-type PropsFromRedux = ConnectedProps<typeof connector>
+type PropsFromRedux = ConnectedProps<typeof connector>;
 
 class App extends Component<PropsFromRedux> {
     unsubscribeFromAuth: Unsubscribe | null = null;
 
     componentDidMount(): void {
-        const { user } = this.props;
-
         this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
             if (userAuth) {
                 const userRef = await createUserProfileDocument(userAuth);
 
                 if (userRef) {
                     userRef.onSnapshot(snapShot => {
-                        user({
+                        this.props.setUser({
                             id: snapShot.id,
                             ...snapShot.data()
                         });
@@ -44,7 +47,7 @@ class App extends Component<PropsFromRedux> {
                 }
             }
 
-            user(userAuth as null)
+            this.props.setUser(userAuth as null)
         })
     }
 
@@ -61,7 +64,17 @@ class App extends Component<PropsFromRedux> {
                 <Switch>
                     <Route exact path='/' component={HomePage} />
                     <Route path='/shop' component={ShopPage} />
-                    <Route path='/signin' component={SignInAndSignUpPage} />
+                    <Route
+                        exact
+                        path='/signin'
+                        render={() =>
+                            this.props.user ? (
+                                <Redirect to='/' />
+                            ) : (
+                                <SignInAndSignUpPage />
+                            )
+                        }
+                    />
                 </Switch>
             </div>
         );

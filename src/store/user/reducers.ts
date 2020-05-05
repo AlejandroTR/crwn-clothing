@@ -1,6 +1,6 @@
 import { UserActionTypes, UserState, SET_USER } from './types';
 
-const initialState: UserState  = { user: null }
+const initialState: UserState  = { user: null };
 
 export function userReducer(state = initialState, action: UserActionTypes): UserState {
     switch (action.type) {
