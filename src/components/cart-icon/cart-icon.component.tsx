@@ -2,13 +2,13 @@ import React, { FunctionComponent } from 'react';
 import { Dispatch } from 'redux';
 import { connect, ConnectedProps } from 'react-redux';
 
-import { ToggleCartAction } from '../../store/cart/types';
-import { toggleCart } from '../../store/cart/actions';
+import { CartActionTypes } from '../../store/cart/cart.types';
+import { toggleCart } from '../../store/cart/cart.actions';
 
 import './cart-icon.styles.scss';
 import { ReactComponent as ShoppingIcon } from '../../assets/icons/shopping-bag.svg';
 
-const mapDispatch = (dispatch: Dispatch<ToggleCartAction>) => ({
+const mapDispatch = (dispatch: Dispatch<CartActionTypes>) => ({
     toggleCart: () => dispatch(toggleCart())
 });
 

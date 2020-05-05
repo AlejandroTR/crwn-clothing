@@ -7,8 +7,8 @@ import { Unsubscribe } from 'firebase';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 
 import { RootState } from './store/reducer';
-import { SetUserAction } from './store/user/types';
-import { setUser } from './store/user/actions';
+import { SetUserAction } from './store/user/user.types';
+import { setUser } from './store/user/user.actions';
 
 import Header from './components/header/header.component';
 import HomePage from './pages/homepage/homepage.component';

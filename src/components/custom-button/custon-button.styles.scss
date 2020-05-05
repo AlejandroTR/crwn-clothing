@@ -1,19 +1,21 @@
 @import '../../assets/styles/core/core';
 
 .custom-button {
+    display: flex;
+    justify-content: center;
     transition: all 0.3s ease-in-out;
     border: 1px solid transparent;
     width: auto;
-    min-width: 165px;
-    height: 50px;
-    padding: 0 35px 0 35px;
+    min-width: $button-min-width;
+    height: $button-height;
+    padding: $button-padding-y $button-padding-x;
     background-color: $black;
     letter-spacing: 0.5px;
     @include font-size(15px);
     line-height: 50px;
     @include family-text;
     font-weight: bolder;
-    color: white;
+    color: $white;
     text-transform: uppercase;
     cursor: pointer;
 
@@ -21,6 +23,18 @@
         border-color: $black;
         background-color: $white;
         color: $black;
+    }
+
+    &.inverted {
+        border-color: $black;
+        background-color: $white;
+        color: $black;
+
+        &:hover {
+            border-color: $white;
+            background-color: $black;
+            color: $white;
+        }
     }
 
     &.google-sign-in {

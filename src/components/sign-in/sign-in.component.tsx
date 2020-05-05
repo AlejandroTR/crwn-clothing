@@ -66,7 +66,7 @@ class SignIn extends Component<{}, SignInState> {
                         label='Password'
                         required
                         handleChange={this.handleChange} />
-                    <div className="buttons">
+                    <div className='buttons'>
                         <CustomButton type='submit' value='Submit Form'>
                             Sign in
                         </CustomButton>

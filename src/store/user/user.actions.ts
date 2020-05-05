@@ -1,5 +1,5 @@
 import { User } from '../../models/user';
-import { SET_USER, UserActionTypes } from './types';
+import { SET_USER, UserActionTypes } from './user.types';
 
 export function setUser(user: User | null): UserActionTypes {
     return {

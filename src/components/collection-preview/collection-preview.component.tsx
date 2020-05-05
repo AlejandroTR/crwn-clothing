@@ -1,5 +1,7 @@
 import React, { FunctionComponent } from 'react';
 
+import { ItemCard } from '../../store/cart/cart.types';
+
 import CollectionItem from '../collection-item/collection-item.component';
 
 import './collection-preview.styles.scss'
@@ -12,8 +14,8 @@ const CollectionPreview: FunctionComponent<Collection> = ({ title, items }) => (
         <div className='preview'>
             {items
                 .filter((item: Item, idx: number) => idx < 4)
-                .map(({ id, ...props }) => (
-                    <CollectionItem key={id} {...props} />
+                .map((item) => (
+                    <CollectionItem key={item.id} item={item as ItemCard} />
                 ))
             }
         </div>
