@@ -6,10 +6,12 @@ import { auth } from '../../firebase/firebase.utils';
 
 import { RootState } from '../../store/reducer';
 
+import CartIcon from '../cart-icon/cart-icon.component';
+
 import './nav.styles.scss';
 
-const mapState = (state: RootState) => ({
-    user: state.user.user,
+const mapState = ({ user: { user } }: RootState) => ({
+    user,
 });
 
 const connector = connect(mapState);
@@ -33,6 +35,7 @@ const Nav: FunctionComponent<PropsFromRedux> = ({ user }) => (
                 Sing in
             </Link>
         )}
+        <CartIcon />
     </div>
 );
 

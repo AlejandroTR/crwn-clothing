@@ -1,0 +1,23 @@
+@import '../../assets/styles/core/core';
+
+.cart-icon {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+
+    .shopping-icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .item-count {
+        position: absolute;
+        bottom: 12px;
+        @include font-size(10px);
+        font-weight: bold;
+    }
+}

@@ -17,8 +17,8 @@ import SignInAndSignUpPage from './pages/sign-in-and-sing-up/sign-in-and-sing-up
 
 import { User } from './models/user';
 
-const mapState = ({ user }: RootState) => ({
-    user: user.user
+const mapState = ({ user: { user } }: RootState) => ({
+    user
 });
 
 const mapDispatch = (dispatch: Dispatch<SetUserAction>) => ({

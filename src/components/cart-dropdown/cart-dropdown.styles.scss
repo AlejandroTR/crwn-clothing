@@ -1,0 +1,26 @@
+@import '../../assets/styles/core/core';
+
+.cart-dropdown {
+    position: absolute;
+    z-index: 5;
+    top: 90px;
+    right: 40px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid $black;
+    width: 240px;
+    height: 340px;
+    padding: 20px;
+    background-color: $white;
+
+    .cart-items {
+        display: flex;
+        flex-direction: column;
+        overflow: auto;
+        height: 240px;
+    }
+
+    button {
+        margin-top: auto;
+    }
+}
