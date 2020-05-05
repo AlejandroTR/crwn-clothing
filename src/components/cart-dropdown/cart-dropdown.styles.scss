@@ -17,7 +17,28 @@
         display: flex;
         flex-direction: column;
         overflow: auto;
+        color: rgba(80, 80, 80, 0);
+        transition: all 0.5s;
         height: 240px;
+
+        &::-webkit-scrollbar {
+            width: 14px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-clip: content-box;
+            border: 4px solid transparent;
+            border-radius: 0;
+            box-shadow: inset 0 0 0 10px;
+        }
+
+        &::-webkit-scrollbar-corner {
+            background-color: transparent;
+        }
+
+        &:hover {
+            color: rgba(80, 80, 80, 0.45);
+        }
     }
 
     button {
