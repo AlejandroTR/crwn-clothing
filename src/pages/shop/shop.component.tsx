@@ -2,7 +2,7 @@ import React, { Component, ReactNode } from 'react';
 
 import SHOP_DATA from './shop.data';
 
-import { Collection } from '../../model/collection';
+import { Collection } from '../../models/collection';
 
 import PreviewCollection from '../../components/collection-preview/collection-preview.component';
 

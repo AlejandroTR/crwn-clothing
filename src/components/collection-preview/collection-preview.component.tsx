@@ -4,7 +4,7 @@ import CollectionItem from '../collection-item/collection-item.component';
 
 import './collection-preview.styles.scss'
 
-import { Collection, Item } from '../../model/collection';
+import { Collection, Item } from '../../models/collection';
 
 const CollectionPreview: FunctionComponent<Collection> = ({ title, items }) => (
     <div className='collection-preview'>

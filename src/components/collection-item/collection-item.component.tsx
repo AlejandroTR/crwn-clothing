@@ -2,7 +2,7 @@ import React, {FunctionComponent} from 'react';
 
 import './collection-item.styles.scss';
 
-import { Item } from '../../model/collection';
+import { Item } from '../../models/collection';
 
 const CollectionItem: FunctionComponent<Item> = ({ name, price, imageUrl }) => (
     <div className='collection-item'>

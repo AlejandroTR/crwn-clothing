@@ -1,15 +1,22 @@
 import React, { FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
+import { connect, ConnectedProps } from 'react-redux';
 
 import { auth } from '../../firebase/firebase.utils';
 
+import { RootState } from '../../store/reducer';
+
 import './nav.styles.scss';
 
-interface NavProps {
-    currentUser?: any;
-}
+const mapState = (state: RootState) => ({
+    user: state.user.user,
+});
 
-const Nav: FunctionComponent<NavProps> = ({ currentUser }) => (
+const connector = connect(mapState);
+
+type PropsFromRedux = ConnectedProps<typeof connector>
+
+const Nav: FunctionComponent<PropsFromRedux> = ({ user }) => (
     <div className="nav">
         <Link className='nav-item' to='/shop'>
             Shop
@@ -17,7 +24,7 @@ const Nav: FunctionComponent<NavProps> = ({ currentUser }) => (
         <Link className='nav-item' to='/signin'>
             Contact
         </Link>
-        {currentUser ? (
+        {user ? (
             <div className='nav-item' onClick={() => auth.signOut()}>
                 Sign out
             </div>
@@ -29,4 +36,4 @@ const Nav: FunctionComponent<NavProps> = ({ currentUser }) => (
     </div>
 )
 
-export default Nav;
+export default connector(Nav);

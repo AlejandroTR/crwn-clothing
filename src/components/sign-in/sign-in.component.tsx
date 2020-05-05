@@ -70,7 +70,7 @@ class SignIn extends Component<{}, SignInState> {
                         <CustomButton type='submit' value='Submit Form'>
                             Sign in
                         </CustomButton>
-                        <CustomButton onClick={signInWithGoogle} value='Submit Form' isGoogleSignIn>
+                        <CustomButton type='button' onClick={signInWithGoogle} value='Submit Form' isGoogleSignIn>
                             Sign in with Google
                         </CustomButton>
                     </div>

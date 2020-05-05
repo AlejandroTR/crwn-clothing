@@ -6,16 +6,12 @@ import Nav from '../nav/nav.component';
 import './header.styles.scss';
 import { ReactComponent as Logo } from '../../assets/icons/crown.svg';
 
-interface HeaderProps {
-    currentUser?: any;
-}
-
-const Header: FunctionComponent<HeaderProps> = ({ currentUser }) => (
+const Header: FunctionComponent = () => (
     <div className='header'>
         <Link className='logo-container' to='/'>
             <Logo />
         </Link>
-        <Nav currentUser={currentUser} />
+        <Nav />
     </div>
 )
 
