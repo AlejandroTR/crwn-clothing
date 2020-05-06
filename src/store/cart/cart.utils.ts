@@ -1,7 +1,6 @@
 import { ItemCard } from './cart.types';
 
-export function
-addToCart(cartItems: Array<ItemCard>, cartItemToAdd: ItemCard): Array<ItemCard> {
+export function addToCart(cartItems: Array<ItemCard>, cartItemToAdd: ItemCard): Array<ItemCard> {
     const existingCartItem = cartItems.find(
         (cartItem: ItemCard) => cartItem.id === cartItemToAdd.id
     );

@@ -3,14 +3,15 @@ import { connect, ConnectedProps } from 'react-redux';
 
 import { RootState } from '../../store/reducer';
 import { ItemCard } from '../../store/cart/cart.types';
+import { selectCartItems } from '../../store/cart/cart.selectors';
 
 import CustomButton from '../custom-button/custom-button.component';
 import CartItem from '../cart-item/cart-item.component';
 
 import './cart-dropdown.styles.scss';
 
-const mapState = ({ cart: { cartItems } }: RootState) => ({
-    cartItems
+const mapState = (state: RootState) => ({
+    cartItems: selectCartItems(state)
 });
 
 const connector = connect(mapState);
