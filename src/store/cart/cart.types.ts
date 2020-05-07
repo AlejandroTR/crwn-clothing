@@ -11,7 +11,9 @@ export interface CartState {
 
 export const TOGGLE_CART = 'TOGGLE_CART';
 export const ADD_TO_CART = 'ADD_TO_CART';
-
+export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
+export const INCREASE_QUANTITY = 'INCREASE_QUANTITY';
+export const DECREASE_QUANTITY = 'DECREASE_QUANTITY';
 
 export interface ToggleCartAction {
     type: typeof TOGGLE_CART
@@ -22,4 +24,24 @@ export interface AddToCartAction {
     payload: CartItem
 }
 
-export type CartActionTypes = ToggleCartAction | AddToCartAction;
+export interface RemoveFromCartAction {
+    type: typeof REMOVE_FROM_CART
+    payload: CartItem
+}
+
+export interface IncreaseQuantityAction {
+    type: typeof INCREASE_QUANTITY
+    payload: CartItem
+}
+
+export interface DecreaseQuantityAction {
+    type: typeof DECREASE_QUANTITY
+    payload: CartItem
+}
+
+export type CartActionTypes =
+    ToggleCartAction
+    | AddToCartAction
+    | RemoveFromCartAction
+    | IncreaseQuantityAction
+    | DecreaseQuantityAction;
