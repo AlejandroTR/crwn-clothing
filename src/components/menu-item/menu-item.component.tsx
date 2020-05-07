@@ -3,7 +3,7 @@ import { withRouter, RouteComponentProps } from 'react-router-dom';
 
 import './menu-item.styles.scss'
 
-interface MenuItemProps extends RouteComponentProps<any> {
+interface MenuItemProps extends RouteComponentProps {
     title: string;
     imageUrl: string;
     size?: string

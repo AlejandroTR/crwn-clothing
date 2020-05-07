@@ -1,4 +1,4 @@
-import { ItemCard, CartActionTypes, TOGGLE_CART, ADD_TO_CART } from './cart.types';
+import { CartItem, CartActionTypes, TOGGLE_CART, ADD_TO_CART } from './cart.types';
 
 export function toggleCart(): CartActionTypes {
     return {
@@ -6,7 +6,7 @@ export function toggleCart(): CartActionTypes {
     }
 }
 
-export function addToCart(item: ItemCard): CartActionTypes {
+export function addToCart(item: CartItem): CartActionTypes {
     return {
         type: ADD_TO_CART,
         payload: item

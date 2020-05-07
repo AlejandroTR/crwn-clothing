@@ -1,14 +1,21 @@
 import React, {FunctionComponent} from 'react';
 
-import { ItemCard } from '../../store/cart/cart.types';
+import { CartItem as CItem } from '../../store/cart/cart.types';
 
 import './cart-item.styles.scss';
 
 interface CartItemProps {
-    item: ItemCard;
+    item: CItem;
 }
 
-const CartItem: FunctionComponent<CartItemProps> = ({ item: { imageUrl, price, name, quantity } }) => (
+const CartItem: FunctionComponent<CartItemProps> = ({
+    item: {
+        imageUrl,
+        price,
+        name,
+        quantity
+    }
+}) => (
     <div className='cart-item'>
         <img src={imageUrl} alt='item' />
         <div className='item-details'>

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect, ConnectedProps } from 'react-redux';
 
 import { RootState } from '../../store/reducer';
+import { selectCartOpen } from '../../store/cart/cart.selectors';
 
 import Nav from '../nav/nav.component';
 import CartDropdown from '../cart-dropdown/cart-dropdown.component';
@@ -10,8 +11,8 @@ import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 import './header.styles.scss';
 import { ReactComponent as Logo } from '../../assets/icons/crown.svg';
 
-const mapState = ({ cart: { cartOpen } }: RootState) => ({
-    cartOpen
+const mapState = (state: RootState) => ({
+    cartOpen: selectCartOpen(state)
 });
 
 const connector = connect(mapState);

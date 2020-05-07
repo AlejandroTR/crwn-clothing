@@ -5,13 +5,14 @@ import { connect, ConnectedProps } from 'react-redux';
 import { auth } from '../../firebase/firebase.utils';
 
 import { RootState } from '../../store/reducer';
+import { selectCurrentUser } from '../../store/user/user.selectors';
 
 import CartIcon from '../cart-icon/cart-icon.component';
 
 import './nav.styles.scss';
 
-const mapState = ({ user: { user } }: RootState) => ({
-    user,
+const mapState = (state: RootState) => ({
+    user: selectCurrentUser(state),
 });
 
 const connector = connect(mapState);

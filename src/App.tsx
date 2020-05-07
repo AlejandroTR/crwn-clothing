@@ -5,20 +5,27 @@ import { connect, ConnectedProps } from 'react-redux';
 
 import { Unsubscribe } from 'firebase';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
+import { createStructuredSelector } from 'reselect';
 
-import { RootState } from './store/reducer';
 import { SetUserAction } from './store/user/user.types';
 import { setUser } from './store/user/user.actions';
+import { selectCurrentUser } from './store/user/user.selectors';
 
 import Header from './components/header/header.component';
 import HomePage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shop/shop.component';
 import SignInAndSignUpPage from './pages/sign-in-and-sing-up/sign-in-and-sing-up.component';
+import CheckoutPage from './pages/checkout/checkout.component';
 
 import { User } from './models/user';
+import { RootState } from './store/reducer';
 
-const mapState = ({ user: { user } }: RootState) => ({
-    user
+interface DesiredSelection {
+    user: User | null | undefined;
+}
+
+const mapState = createStructuredSelector<RootState, DesiredSelection>({
+    user: selectCurrentUser
 });
 
 const mapDispatch = (dispatch: Dispatch<SetUserAction>) => ({
@@ -64,6 +71,7 @@ class App extends Component<PropsFromRedux> {
                 <Switch>
                     <Route exact path='/' component={HomePage} />
                     <Route path='/shop' component={ShopPage} />
+                    <Route exact path='/checkout' component={CheckoutPage} />
                     <Route
                         exact
                         path='/signin'

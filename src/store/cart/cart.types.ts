@@ -1,12 +1,12 @@
 import { Item } from '../../models/collection';
 
-export interface ItemCard extends Item {
+export interface CartItem extends Item {
     quantity: number;
 }
 
 export interface CartState {
     cartOpen: boolean;
-    cartItems: Array<ItemCard>
+    cartItems: Array<CartItem>
 }
 
 export const TOGGLE_CART = 'TOGGLE_CART';
@@ -19,7 +19,7 @@ export interface ToggleCartAction {
 
 export interface AddToCartAction {
     type: typeof ADD_TO_CART
-    payload: ItemCard
+    payload: CartItem
 }
 
 export type CartActionTypes = ToggleCartAction | AddToCartAction;

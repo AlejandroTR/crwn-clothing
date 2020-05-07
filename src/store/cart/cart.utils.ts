@@ -1,12 +1,12 @@
-import { ItemCard } from './cart.types';
+import { CartItem } from './cart.types';
 
-export function addToCart(cartItems: Array<ItemCard>, cartItemToAdd: ItemCard): Array<ItemCard> {
+export function addToCart(cartItems: Array<CartItem>, cartItemToAdd: CartItem): Array<CartItem> {
     const existingCartItem = cartItems.find(
-        (cartItem: ItemCard) => cartItem.id === cartItemToAdd.id
+        (cartItem: CartItem) => cartItem.id === cartItemToAdd.id
     );
 
     if (existingCartItem) {
-        return cartItems.map((cartItem: ItemCard) =>
+        return cartItems.map((cartItem: CartItem) =>
             cartItem.id === cartItemToAdd.id
                 ? { ...cartItem, quantity: cartItem.quantity + 1 }
                 : cartItem

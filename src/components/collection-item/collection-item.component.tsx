@@ -2,7 +2,7 @@ import React, {FunctionComponent} from 'react';
 import { Dispatch } from 'redux';
 import { connect, ConnectedProps } from 'react-redux';
 
-import { ItemCard, CartActionTypes } from '../../store/cart/cart.types';
+import { CartItem, CartActionTypes } from '../../store/cart/cart.types';
 import { addToCart } from '../../store/cart/cart.actions';
 
 import CustomButton from '../custom-button/custom-button.component';
@@ -10,7 +10,7 @@ import CustomButton from '../custom-button/custom-button.component';
 import './collection-item.styles.scss';
 
 const mapDispatch = (dispatch: Dispatch<CartActionTypes>) => ({
-    addToCart: (item: ItemCard) => dispatch(addToCart(item))
+    addToCart: (item: CartItem) => dispatch(addToCart(item))
 });
 
 const connector = connect(null, mapDispatch);
@@ -18,7 +18,7 @@ const connector = connect(null, mapDispatch);
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
 interface CollectionItemProps extends PropsFromRedux {
-    item: ItemCard;
+    item: CartItem;
 }
 
 const CollectionItem: FunctionComponent<CollectionItemProps> = ({ item, addToCart }) => {

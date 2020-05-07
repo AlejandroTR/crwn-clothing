@@ -2,6 +2,8 @@ import React, { FunctionComponent } from 'react';
 import { Dispatch } from 'redux';
 import { connect, ConnectedProps } from 'react-redux';
 
+import { createStructuredSelector } from 'reselect';
+
 import { RootState } from '../../store/reducer';
 import { CartActionTypes } from '../../store/cart/cart.types';
 import { toggleCart } from '../../store/cart/cart.actions';
@@ -10,8 +12,12 @@ import { selectCartItemsCount } from '../../store/cart/cart.selectors';
 import './cart-icon.styles.scss';
 import { ReactComponent as ShoppingIcon } from '../../assets/icons/shopping-bag.svg';
 
-const mapState = (state: RootState) => ({
-    itemCount: selectCartItemsCount(state)
+interface DesiredSelection {
+    itemCount: number
+}
+
+const mapState =createStructuredSelector<RootState, DesiredSelection>({
+    itemCount: selectCartItemsCount
 });
 
 const mapDispatch = (dispatch: Dispatch<CartActionTypes>) => ({
