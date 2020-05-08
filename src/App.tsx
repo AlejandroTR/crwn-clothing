@@ -7,6 +7,7 @@ import { Unsubscribe } from 'firebase';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import { createStructuredSelector } from 'reselect';
 
+import { RootState } from './store/reducer';
 import { SetUserAction } from './store/user/user.types';
 import { setUser } from './store/user/user.actions';
 import { selectCurrentUser } from './store/user/user.selectors';
@@ -18,7 +19,6 @@ import SignInAndSignUpPage from './pages/sign-in-and-sing-up/sign-in-and-sing-up
 import CheckoutPage from './pages/checkout/checkout.component';
 
 import { User } from './models/user';
-import { RootState } from './store/reducer';
 
 interface DesiredSelection {
     user: User | null | undefined;

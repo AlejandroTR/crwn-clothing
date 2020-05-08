@@ -14,7 +14,7 @@ const CollectionPreview: FunctionComponent<Collection> = ({ title, items }) => (
         <div className='preview'>
             {items
                 .filter((item: Item, idx: number) => idx < 4)
-                .map((item) => (
+                .map((item: Item) => (
                     <CollectionItem key={item.id} item={item as CartItem} />
                 ))
             }
