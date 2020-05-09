@@ -17,4 +17,4 @@ const FormInput: FunctionComponent<FormInputProps> = ({ handleChange, label, ...
     </div>
 );
 
-export default FormInput
+export default FormInput;

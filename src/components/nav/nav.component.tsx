@@ -12,7 +12,7 @@ import CartIcon from '../cart-icon/cart-icon.component';
 import './nav.styles.scss';
 
 const mapState = (state: RootState) => ({
-    user: selectCurrentUser(state),
+    user: selectCurrentUser(state)
 });
 
 const connector = connect(mapState);

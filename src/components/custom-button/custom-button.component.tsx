@@ -24,4 +24,4 @@ const CustomButton: FunctionComponent<CustomButtonProps> = ({
     </button>
 );
 
-export default CustomButton
+export default CustomButton;

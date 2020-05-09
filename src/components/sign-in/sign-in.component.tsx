@@ -80,4 +80,4 @@ class SignIn extends Component<{}, SignInState> {
     }
 }
 
-export default SignIn
+export default SignIn;

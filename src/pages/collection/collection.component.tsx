@@ -26,7 +26,9 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 
 const CollectionPage: FunctionComponent<PropsFromRedux> = ({ collection }) => (
     <div className='collection-page'>
-        <h2 className='title'>{collection?.title}</h2>
+        <h2 className='title'>
+            {collection ? collection.title : 'Category not found'}
+        </h2>
         <div className='items'>
             {collection?.items.map(
                 (item: Item) => <CollectionItem key={item.id} item={item as CartItem} />

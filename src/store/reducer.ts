@@ -20,6 +20,6 @@ const rootReducer = combineReducers({
     shop: shopReducer
 });
 
-export const persistedReducer: Reducer = persistReducer<RootState, any>(persistConfig, rootReducer);
-
 export type RootState = ReturnType<typeof rootReducer>
+
+export const persistedReducer: Reducer = persistReducer<RootState, any>(persistConfig, rootReducer);
