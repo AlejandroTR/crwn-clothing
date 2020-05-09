@@ -6,9 +6,13 @@ import logger from 'redux-logger';
 import { RootState, persistedReducer } from './reducer';
 
 export function configureStore(initialState?: RootState): Array<Store<RootState> | Persistor> {
-    let middleware = applyMiddleware(logger);
+    let middleware = [];
 
-    const store =  createStore(persistedReducer as any, initialState as any, middleware) as Store<RootState>;
+    if (process.env.NODE_ENV === 'development') {
+        middleware.push(logger);
+    }
+
+    const store =  createStore(persistedReducer as any, initialState as any, applyMiddleware(...middleware)) as Store<RootState>;
     const persistor = persistStore(store);
 
     return [ store, persistor ];
