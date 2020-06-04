@@ -1,14 +1,16 @@
-import { ShopState } from './shop.types';
-import { AnyAction } from 'redux';
-
-import SHOP_DATA from './shop.data';
+import { ShopState, UPDATE_COLLECTIONS, ShopActionTypes } from './shop.types';
 
 const initialState: ShopState = {
-    collections: SHOP_DATA
+    collections: null
 };
 
-export function shopReducer(state = initialState, action: AnyAction): ShopState {
+export function shopReducer(state = initialState, action: ShopActionTypes): ShopState {
     switch (action.type) {
+        case UPDATE_COLLECTIONS:
+            return {
+                ...state,
+                collections: action.payload
+            }
         default:
             return state;
     }

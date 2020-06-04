@@ -40,13 +40,15 @@ class App extends Component<PropsFromRedux> {
     unsubscribeFromAuth: Unsubscribe | null = null;
 
     componentDidMount(): void {
+        const { setUser } = this.props
+
         this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
             if (userAuth) {
                 const userRef = await createUserProfileDocument(userAuth);
 
                 if (userRef) {
                     userRef.onSnapshot(snapShot => {
-                        this.props.setUser({
+                        setUser({
                             id: snapShot.id,
                             ...snapShot.data()
                         });
@@ -54,7 +56,7 @@ class App extends Component<PropsFromRedux> {
                 }
             }
 
-            this.props.setUser(userAuth as null)
+            setUser(userAuth as null)
         })
     }
 

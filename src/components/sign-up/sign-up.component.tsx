@@ -89,7 +89,7 @@ class SignUp extends Component<any, SignUpState>{
                         handleChange={this.handleChange}
                     />
                     <FormInput
-                        type='confirmPassword'
+                        type='password'
                         id='signUpConfirmPassword'
                         name='confirmPassword'
                         value={confirmPassword}

@@ -6,7 +6,7 @@ import { createStructuredSelector } from 'reselect';
 import { RootState } from '../../store/reducer';
 import { selectCollectionsForPreview } from '../../store/shop/shop.selectors';
 
-import PreviewCollection from '../collection-preview/collection-preview.component';
+import CollectionPreview from '../collection-preview/collection-preview.component';
 
 import './collections-overview.styles.scss';
 
@@ -27,7 +27,7 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 const CollectionsOverview: FunctionComponent<PropsFromRedux> = ({ collections }) => (
     <div className='collections-overview'>
         {collections.map(({ id, ...props }) => (
-            <PreviewCollection key={id} {...props} />
+            <CollectionPreview key={id} {...props} />
         ))}
     </div>
 );

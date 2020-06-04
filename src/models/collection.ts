@@ -1,12 +1,16 @@
+export interface Collections {
+    [key: string]: Collection
+}
+
 export interface Collection {
-    id?: number;
+    id?: string;
     title: string;
     routeName: string,
     items: Array<Item>
 }
 
 export interface Item {
-    id?: number;
+    id: number;
     name: string
     imageUrl: string;
     price: number;

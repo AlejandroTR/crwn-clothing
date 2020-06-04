@@ -1,12 +1,12 @@
 import {
     CartItem,
-    CartActionTypes,
     CartState,
     TOGGLE_CART,
     ADD_TO_CART,
     REMOVE_FROM_CART,
     INCREASE_QUANTITY,
-    DECREASE_QUANTITY
+    DECREASE_QUANTITY,
+    CartActionTypes
 } from './cart.types';
 import { addToCart, decreaseQuantity } from './cart.utils';
 

@@ -3,6 +3,7 @@ import 'firebase/auth';
 import 'firebase/firestore';
 
 import { User } from 'firebase';
+import { Collection } from '../models/collection';
 
 const config: Object = {
     apiKey: 'AIzaSyCThm4Z0OjBBlI4BZEZCikAIIeydpdR0pc',
@@ -16,31 +17,60 @@ const config: Object = {
 };
 
 export const createUserProfileDocument = async (userAuth: User, additionalData?: any) => {
-        if (!userAuth) return;
+    if (!userAuth) return;
 
-        const userRef = firestore.doc(`users/${userAuth.uid}`);
+    const userRef = firestore.doc(`users/${userAuth.uid}`);
 
-        const snapShot = await userRef.get();
+    const snapShot = await userRef.get();
 
-        if (!snapShot.exists) {
-            const { displayName, email } = userAuth;
-            const createdAt = new Date();
+    if (!snapShot.exists) {
+        const { displayName, email } = userAuth;
+        const createdAt = new Date();
 
-            try {
-                await userRef.set({
-                    displayName,
-                    email,
-                    createdAt,
-                    ...additionalData
-                })
-            } catch (e) {
-                console.log('error creating modules', e.message)
-            }
+        try {
+            await userRef.set({
+                displayName,
+                email,
+                createdAt,
+                ...additionalData
+            })
+        } catch (e) {
+            console.log('error creating modules', e.message)
         }
-
-        return userRef;
     }
 
+    return userRef;
+};
+
+export const addCollectionAndDocuments = async (collectionPath: string, objectsToAdd: Array<any>) => {
+    const collectionRef = firestore.collection(collectionPath);
+
+    const batch = firestore.batch();
+    for (const object of objectsToAdd) {
+        let newDocRef = collectionRef.doc();
+        batch.set(newDocRef, object)
+    }
+
+    return await batch.commit();
+}
+
+export const convertCollectionsSnapshotToMap = (collections: firebase.firestore.QuerySnapshot) => {
+    const transformedCollection = collections.docs.map<Collection>(doc => {
+        const { title, items } = doc.data();
+
+        return {
+            routeName: encodeURI(title.toLowerCase()),
+            id: doc.id,
+            title,
+            items
+        }
+    });
+
+    return transformedCollection.reduce((accumulator: {[key: string]: Collection}, collection: Collection) => {
+        accumulator[collection.title.toLowerCase()] = collection;
+        return accumulator;
+    }, {});
+}
 
 if (!firebase.apps.length) {
     firebase.initializeApp(config);
