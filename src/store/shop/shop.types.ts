@@ -1,14 +1,30 @@
 import { Collections } from '../../models/collection';
 
 export interface ShopState {
-    collections: Collections | null
+    collections: Collections | null,
+    fetching: boolean,
+    errorMessage: undefined | string
 }
 
-export const UPDATE_COLLECTIONS = 'UPDATE_COLLECTIONS';
+export const FETCH_COLLECTIONS_START = 'FETCH_COLLECTIONS_START';
+export const FETCH_COLLECTIONS_SUCCESS = 'FETCH_COLLECTIONS_SUCCESS';
+export const FETCH_COLLECTIONS_FAILED = 'FETCH_COLLECTIONS_FAILED';
 
-export interface UpdateCollectionsAction {
-    type: typeof UPDATE_COLLECTIONS,
+export interface FetchCollectionsStartAction {
+    type: typeof FETCH_COLLECTIONS_START,
+}
+
+export interface FetchCollectionsSuccessAction {
+    type: typeof FETCH_COLLECTIONS_SUCCESS,
     payload: Collections
 }
 
-export type ShopActionTypes = UpdateCollectionsAction;
+export interface FetchCollectionsFailedAction {
+    type: typeof FETCH_COLLECTIONS_FAILED,
+    payload: string
+}
+
+export type ShopActionTypes =
+    FetchCollectionsStartAction
+    | FetchCollectionsSuccessAction
+    | FetchCollectionsFailedAction

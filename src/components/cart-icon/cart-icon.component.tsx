@@ -16,7 +16,7 @@ interface DesiredSelection {
     itemCount: number
 }
 
-const mapState =createStructuredSelector<RootState, DesiredSelection>({
+const mapState = createStructuredSelector<RootState, DesiredSelection>({
     itemCount: selectCartItemsCount
 });
 
